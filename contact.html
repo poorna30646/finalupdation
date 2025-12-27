@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us | Secure Web Extensions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+    
+        .contact-container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        
+        .contact-card { padding: 18px; }
+        .contact-card h2 { margin-top: 0; }
+        .contact-card p { line-height: 1.6; font-size: 15px; }
+
+        .contact-info p {
+            margin: 12px 0;
+            font-weight: 500;
+        }
+
+        .contact-info span {
+            color: #0f2027;
+            font-weight: bold;
+        }
+
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .contact-form textarea {
+            resize: none;
+            height: 120px;
+        }
+
+        .contact-form button {
+            background: #0f2027;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .contact-form button:hover {
+            background: #203a43;
+        }
+
+        .back-home {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-home a {
+            color: #00f5ff;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <header class="header">
+        <h1 class="project-name">Contact Us</h1>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="business.html">Business</a>
+            <a href="education.html">Education</a>
+            <a href="banking.html">Banking</a>
+            <a href="crypto.html">Crypto</a>
+        </nav>
+    </header>
+
+    <section class="contact-container">
+
+        
+        <div class="contact-card contact-info">
+            <h2>Get in Touch</h2>
+            <p>
+                Have questions about phishing detection or our browser extensions?
+                Reach out to us anytime.
+            </p>
+
+            <p>📞 <span>Toll-Free:</span> 1800-SECURE-01</p>
+            <p>📧 <span>Email:</span> support@securewebextensions.com</p>
+            <p>🌐 <span>Availability:</span> 24/7 Online Support</p>
+        </div>
+
+        <div class="contact-card">
+            <h2>Send Us a Message</h2>
+
+            <form id="contact-form" class="contact-form">
+                <input id="name" type="text" placeholder="Your Name" required>
+                <input id="email" type="email" placeholder="Your Email" required>
+                <textarea id="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+
+            <p style="font-size:13px; margin-top:10px; color:#555;">
+                *This form is for demonstration purposes.
+            </p>
+        </div>
+
+    </section>
+
+    <div class="back-home">
+        <a href="index.html">← Back to Home</a>
+    </div>
+
+            <script type="module">
+                import { firebaseConfig } from './firebase-config.js';
+                import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
+                import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
+
+                const isPlaceholder = !firebaseConfig || (firebaseConfig.apiKey && firebaseConfig.apiKey.startsWith('REPLACE'));
+                if (isPlaceholder) {
+                    console.warn('firebase-config.js not configured — contact form will not submit to Firestore. Replace placeholders in firebase-config.js with your project config.');
+                }
+
+                let db = null;
+                if (!isPlaceholder) {
+                    const app = initializeApp(firebaseConfig);
+                    db = getFirestore(app);
+                }
+
+                const form = document.getElementById('contact-form');
+                if (form) {
+                    form.addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        const name = document.getElementById('name').value.trim();
+                        const email = document.getElementById('email').value.trim();
+                        const message = document.getElementById('message').value.trim();
+                        if (!name || !email || !message) {
+                            alert('Please complete all fields.');
+                            return;
+                        }
+                        if (!db) {
+                            alert('Firestore not configured. Please update firebase-config.js with your project settings.');
+                            return;
+                        }
+                        try {
+                            await addDoc(collection(db, 'contacts'), {
+                                name,
+                                email,
+                                message,
+                                createdAt: serverTimestamp()
+                            });
+                            alert('Thanks — your message was sent.');
+                            form.reset();
+                        } catch (err) {
+                            console.error('Firestore error:', err);
+                            alert('Failed to send message. Check console and Firebase config/rules.');
+                        }
+                    });
+                }
+            </script>
+
+            <script>
+
+                (function(){
+                    const form = document.getElementById('contact-form');
+                    if(!form) return;
+                    const fields = form.querySelectorAll('input,textarea,button');
+                    fields.forEach(f=>{
+                        f.style.pointerEvents = 'auto';
+                        f.addEventListener('click', ()=> f.focus());
+                    });
+
+                    form.addEventListener('click', (ev)=>{
+                        const x = ev.clientX, y = ev.clientY;
+                        if(typeof x !== 'number') return;
+                        const top = document.elementFromPoint(x,y);
+                        if(top && !form.contains(top) && top !== document.body && top !== document.documentElement) {
+                            console.log('Click target is overlaying element:', top);
+                        }
+                    });
+                })();
+            </script>
+    <footer class="footer">
+        <p>© 2025 Secure Web Extensions | Contact Support</p>
+    </footer>
+
+</body>
+</html>

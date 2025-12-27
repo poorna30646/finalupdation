@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(45deg, #f3f5f9, #e8f4fd, #f0f8ff);
+  background-size: 400% 400%;
+  animation: backgroundShift 10s ease infinite;
+  color: #333;
+}
+
+@keyframes backgroundShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.header {
+  background: #0a2540;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.header p {
+  opacity: 0.9;
+  margin-top: 6px;
+}
+
+.extensions-list {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+.extension-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.extension-card img {
+  width: 70px;
+  height: 70px;
+  transition: transform 0.3s ease;
+}
+
+.extension-card img:hover {
+  transform: scale(1.05);
+}
+
+.card-content {
+  flex: 1;
+}
+
+.card-content h2 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.card-content p {
+  font-size: 14px;
+  color: #666;
+}
+
+.arrow {
+  font-size: 24px;
+  color: #0a2540;
+}
+
+.extension-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}

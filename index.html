@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Secure Web Extensions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <h1 class="project-name">Secure Web Extensions</h1>
+                <button id="nav-toggle" class="nav-toggle" aria-label="Open navigation">☰</button>
+                <nav class="nav" aria-hidden="true">
+            <a href="business.html">Business</a>
+            <a href="education.html">Education</a>
+            <a href="banking.html">Banking</a>
+            <a href="crypto.html">Crypto</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+        <script>
+            (function(){
+                const btn = document.getElementById('nav-toggle');
+                const nav = document.querySelector('.nav');
+                if (!btn || !nav) return;
+                btn.addEventListener('click', function(e){
+                    const open = nav.classList.toggle('open');
+                    nav.setAttribute('aria-hidden', String(!open));
+                    btn.setAttribute('aria-expanded', String(open));
+                });
+                nav.addEventListener('click', function(e){ if(e.target.tagName==='A') { nav.classList.remove('open'); nav.setAttribute('aria-hidden','true'); btn.setAttribute('aria-expanded','false'); } });
+                document.addEventListener('click', function(e){ if (!nav.contains(e.target) && e.target !== btn) { nav.classList.remove('open'); nav.setAttribute('aria-hidden','true'); btn.setAttribute('aria-expanded','false'); } });
+            })();
+        </script>
+    <main class="main">
+        <section class="intro">
+            <h2>Protecting Users from Phishing & Malicious Websites</h2>
+            <p>
+                Secure Web Extensions is a cybersecurity project that provides
+                browser-based protection against phishing attacks across
+                business, education, banking, and cryptocurrency platforms.
+            </p>
+        </section>
+        <section class="phishing-section">
+
+            <div class="phishing-card">
+                <h3>What is Phishing?</h3>
+                <p>
+                    Phishing is a cyber attack where attackers trick users into
+                    revealing sensitive information such as passwords, OTPs,
+                    bank details, or crypto wallet keys by pretending to be
+                    trusted emails, messages, or websites.
+                </p>
+            </div>
+
+            <div class="phishing-card">
+                <h3>Why is Phishing Dangerous?</h3>
+                <p>
+                    Phishing attacks can cause financial loss, identity theft,
+                    data breaches, and unauthorized access to personal or
+                    organizational accounts. A single mistake can compromise
+                    user security.
+                </p>
+            </div>
+
+            <div class="phishing-card">
+                <h3>Common Types of Phishing</h3>
+                <p>
+                    Email phishing, fake websites, SMS scams, banking fraud,
+                    education portal impersonation, and crypto wallet scams
+                    are among the most common phishing techniques today.
+                </p>
+            </div>
+
+        </section>
+        <section class="extensions">
+
+            <div class="card">
+                <img src="img1.jpeg" alt="Email Phishing Detection">
+                <h3>Email Phishing Detection</h3>
+                <p>
+                    Detects fraudulent emails and phishing messages that attempt
+                    to steal login credentials and personal information.
+                </p>
+            </div>
+
+            <div class="card">
+                <img src="img2.jpeg" alt="Website Phishing Detection">
+                <h3>Website Phishing Detection</h3>
+                <p>
+                    Identifies fake and cloned websites such as banking,
+                    education, and business portals in real time.
+                </p>
+            </div>
+
+            <div class="card">
+                <img src="img3.jpeg" alt="SMS Phishing Detection">
+                <h3>SMS Phishing Detection</h3>
+                <p>
+                    Protects users from malicious SMS links and scam messages
+                    used in phishing attacks.
+                </p>
+            </div>
+
+        </section>
+
+        <section class="intro">
+            <h2>Why This Project Matters</h2>
+            <p>
+                Phishing attacks are one of the most common cyber threats today.
+                This project helps users stay safe online by increasing awareness
+                and providing real-time protection against scams and fraud.
+            </p>
+        </section>
+
+    </main>
+    <footer class="footer">
+        <p>© 2025 Secure Web Extensions</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Crypto Phishing Detection Extension</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: radial-gradient(circle at top, #0b0b0b, #000000);
+      background-size: 400% 400%;
+      animation: bgPulse 12s ease infinite;
+      color: #eaeaea;
+      overflow-x: hidden;
+    }
+
+    @keyframes bgPulse {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      padding: 35px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 34px;
+      color: #00f5ff;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      margin-top: 10px;
+      color: #9ca3af;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(15, 15, 15, 0.92);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 35px;
+      box-shadow: 0 0 25px rgba(0, 245, 255, 0.15);
+      animation: fadeUp 1.2s ease;
+      border: 1px solid rgba(0, 245, 255, 0.15);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: #00f5ff;
+    }
+
+    .card p {
+      line-height: 1.7;
+      color: #d1d5db;
+    }
+    .image-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .image-box img {
+      width: 100%;
+      max-width: 180px;   
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,245,255,0.25);
+      border: 1px solid rgba(0,245,255,0.25);
+      background: #000;
+    }
+
+    .download-btn {
+      display: inline-block;
+      padding: 14px 30px;
+      background: linear-gradient(90deg, #00f5ff, #4f46e5);
+      color: #000;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      margin-top: 10px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(0,245,255,0.6);
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      color: #e5e7eb;
+    }
+
+    .step {
+      background: rgba(0, 245, 255, 0.08);
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      border-left: 3px solid #00f5ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #9ca3af;
+      font-size: 14px;
+    }
+
+    .floating {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .floating span {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #00f5ff;
+      opacity: 0.5;
+      animation: float 18s linear infinite;
+      bottom: -100px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00f5ff;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-1200px) scale(0.4);
+        opacity: 0;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="index.html" class="back-button" style="display:inline-block;margin:12px;padding:8px 12px;background:#ffffff;color:#000000;border-radius:6px;text-decoration:none;">← Back</a>
+<div class="floating">
+  <span style="left:10%; animation-duration:14s;"></span>
+  <span style="left:25%; animation-duration:20s;"></span>
+  <span style="left:40%; animation-duration:16s;"></span>
+  <span style="left:55%; animation-duration:22s;"></span>
+  <span style="left:70%; animation-duration:18s;"></span>
+  <span style="left:85%; animation-duration:24s;"></span>
+</div>
+
+<header>
+  <h1>Crypto Phishing Detection Extension</h1>
+  <p>Protect wallets, exchanges, NFTs, and DeFi platforms from crypto scams</p>
+</header>
+
+<div class="container">
+  <div class="card">
+    <h2>About This Extension</h2>
+    <p>
+      The <strong>Crypto Phishing Detection Extension</strong> protects users from
+      fake wallets, phishing airdrops, scam NFT mints, impersonated exchanges,
+      and malicious DeFi websites before assets are stolen.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Download Extension</h2>
+    <p>Download the Crypto Phishing Detection Extension below.</p>
+    <a href="downloads/my_extension.7z" id="download-zip" class="download-btn" download="my_extension.7z">Download Extension</a>
+  </div>
+
+  <div class="card">
+    <h2>Installation Instructions</h2>
+    <div class="step"><strong>Step 1:</strong> Download the extension ZIP file.</div>
+    <div class="step"><strong>Step 2:</strong> Extract the ZIP file.</div>
+    <div class="step"><strong>Step 3:</strong> Open chrome://extensions.</div>
+    <div class="step"><strong>Step 4:</strong> Enable Developer Mode.</div>
+    <div class="step"><strong>Step 5:</strong> Click Load Unpacked and select the folder.</div>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 Phishing Detection Project | Crypto Security Extension
+</footer>
+
+<script>
+(function(){
+  function isIOS() {
+    return (/iPad|iPhone|iPod/.test(navigator.userAgent)) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  }
+  function triggerDownload(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = filename; document.body.appendChild(a);
+    if (isIOS()) window.open(url, '_blank'); else a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),10000);
+  }
+  const link = document.getElementById('download-zip'); if (!link) return;
+  link.addEventListener('click', async function(e){
+    e.preventDefault();
+    const url = link.getAttribute('href') || 'downloads/my_extension.7z';
+    const filename = link.getAttribute('download') || 'my_extension.7z';
+    try {
+      const head = await fetch(url, { method: 'HEAD' });
+      if (head.ok) { const blob = await fetch(url).then(r=>r.blob()); triggerDownload(blob, filename); return; }
+    } catch (err) {}
+    const message = 'Placeholder: my_extension.7z not found.\nPlace the real file in the downloads/ folder to enable download.';
+    triggerDownload(new Blob([message], { type: 'application/zip' }), filename);
+  });
+})();
+</script>
+
+</body>
+</html>

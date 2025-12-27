@@ -1,0 +1,210 @@
+:root{
+  --bg:#0b0f14;
+  --card:#0f1720;
+  --muted:rgba(255,255,255,0.72);
+  --accent:#00f5ff;
+  --accent-2:#7c4dff;
+  --glass:rgba(255,255,255,0.03);
+  --radius:12px;
+  --shadow-1:0 8px 24px rgba(2,6,23,0.6);
+  --shadow-2:0 18px 50px rgba(2,6,23,0.75);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  background:linear-gradient(180deg,#05060a 0%,var(--bg) 100%);
+  color: #e6eef8;
+  line-height:1.45;
+  -webkit-text-size-adjust:100%;
+}
+
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.container{max-width:1100px;margin:0 auto;padding:20px}
+.header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px}
+.project-name{font-weight:700;font-size:20px;color:#fff}
+.nav{display:flex;gap:14px;align-items:center}
+.nav a{color:var(--muted);font-weight:500;padding:8px 10px;border-radius:8px}
+.nav a:hover{background:var(--glass);color:#fff}
+.nav-toggle{display:none;align-items:center;justify-content:center;background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:8px;border-radius:8px;cursor:pointer}
+.main{padding:30px 16px}
+.intro{text-align:center;padding:28px 8px}
+.intro h2{font-size:24px;margin:0 0 8px}
+.intro p{max-width:900px;margin:0 auto;color:rgba(255,255,255,0.72)}
+
+.grid{display:grid;gap:18px}
+.grid.cols-3{grid-template-columns:repeat(3,1fr)}
+.grid.cols-2{grid-template-columns:repeat(2,1fr)}
+
+.card, .phishing-card, .contact-card{
+  background:linear-gradient(180deg,var(--card),rgba(15,20,28,0.85));
+  border-radius:var(--radius);
+  padding:20px;
+  box-shadow:var(--shadow-1);
+  transition:transform .28s cubic-bezier(.2,.9,.2,1),box-shadow .28s;
+}
+.card:hover, .phishing-card:hover, .contact-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-2)}
+
+.card h3,.card h2,.phishing-card h3{margin:0 0 8px;font-size:18px;color:#fff}
+.card p,.phishing-card p{color:var(--muted);font-size:14px}
+
+.card img{width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:12px}
+
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;border:0}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#051220;box-shadow:0 8px 30px rgba(124,77,255,0.15)}
+.btn-ghost{background:transparent;color:var(--accent);border:1px solid rgba(255,255,255,0.06)}
+.download-btn{display:inline-block;padding:12px 18px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#051220;font-weight:700}
+.back-button, .back-home a{display:inline-block;padding:8px 12px;background:rgba(255,255,255,0.95);color:#051220;border-radius:8px}
+
+
+input[type="text"],input[type="email"],textarea,select{width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--muted)}
+
+.contact-card input[type="text"], .contact-card input[type="email"], .contact-card textarea {
+  color: var(--muted);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.contact-card input::placeholder, .contact-card textarea::placeholder { color: rgba(255,255,255,0.45); }
+.contact-card:hover input, .contact-card:focus-within input,
+.contact-card:hover textarea, .contact-card:focus-within textarea {
+  color: #051220 !important;
+  background: rgba(255,255,255,0.98) !important;
+  border-color: rgba(5,18,32,0.08) !important;
+}
+.contact-card:hover input::placeholder, .contact-card:focus-within input::placeholder,
+.contact-card:hover textarea::placeholder, .contact-card:focus-within textarea::placeholder {
+  color: rgba(5,18,32,0.35) !important;
+}
+textarea{min-height:120px}
+
+.footer{padding:18px;text-align:center;color:rgba(255,255,255,0.45)}
+
+.muted{color:rgba(255,255,255,0.6)}
+.small{font-size:13px}
+
+@media (max-width:980px){.grid.cols-3{grid-template-columns:repeat(2,1fr)}.header{padding:16px}.intro h2{font-size:20px}}
+@media (max-width:520px){
+  .grid.cols-3,.grid.cols-2{grid-template-columns:1fr}
+  .nav-toggle{display:inline-flex}
+  .nav{display:none;position:absolute;top:64px;right:16px;background:linear-gradient(180deg,var(--card),rgba(15,20,28,0.95));padding:12px;border-radius:10px;flex-direction:column;gap:8px;box-shadow:var(--shadow-1);min-width:180px}
+  .nav.open{display:flex}
+  .nav a{padding:8px 12px}
+}
+
+.phishing-section{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin:28px 0}
+.extensions{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin:28px 0}
+.contact-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+
+.contact-card, .contact-form, .contact-container { position: relative; z-index: 9999; pointer-events: auto !important; }
+.contact-form input, .contact-form textarea, .contact-form button { pointer-events: auto !important; user-select: text !important; }
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(5,18,32,0.35) !important; }
+.floating { z-index: 0; pointer-events: none; }
+
+@media (max-width:520px){.card img{height:160px}}
+
+img{display:block;max-width:100%;height:auto}
+
+a:focus,button:focus,input:focus,textarea:focus{outline:3px solid rgba(0,245,255,0.06);outline-offset:2px}
+
+.card:hover, .card:focus-within,
+.phishing-card:hover, .phishing-card:focus-within,
+.contact-card:hover, .contact-card:focus-within {
+  background: #ffffff !important;
+  color: #051220 !important;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 48px rgba(2,6,23,0.12) !important;
+}
+
+.card:hover h2, .card:focus-within h2,
+.phishing-card:hover h3, .phishing-card:focus-within h3,
+.contact-card:hover h2, .contact-card:focus-within h2 {
+  color: #051220 !important;
+}
+.card:hover p, .card:focus-within p,
+.phishing-card:hover p, .phishing-card:focus-within p,
+.contact-card:hover p, .contact-card:focus-within p {
+  color: rgba(5,18,32,0.9) !important;
+}
+
+.card:hover .download-btn, .card:focus-within .download-btn,
+.phishing-card:hover .download-btn, .phishing-card:focus-within .download-btn {
+  background: linear-gradient(90deg,var(--accent),var(--accent-2));
+  color: #051220;
+}
+.card:hover img, .card:focus-within img,
+.phishing-card:hover img, .phishing-card:focus-within img {
+  filter: none; transition: filter .18s ease;
+}
+
+
+.card:focus-within{outline:3px solid rgba(0,245,255,0.12);outline-offset:4px}
+
+
+.about-card{
+  background:linear-gradient(180deg,var(--card),rgba(15,20,28,0.85));
+  border-radius:var(--radius);
+  padding:20px;
+  box-shadow:var(--shadow-1);
+  transition:transform .28s,box-shadow .28s,background .22s;
+}
+.about-card h2{color:#fff}
+.about-card p{color:var(--muted)}
+.about-card:hover,.about-card:focus-within{background:#ffffff;color:#051220;box-shadow:var(--shadow-2);transform:translateY(-8px)}
+
+
+.extension-card{
+  display:flex;align-items:center;gap:20px;background:linear-gradient(180deg,var(--card),rgba(15,20,28,0.85));padding:16px;border-radius:12px;box-shadow:var(--shadow-1);transition:transform .22s,box-shadow .22s,background .22s;
+}
+.extension-card .card-content h2{color:#fff}
+.extension-card .card-content p{color:var(--muted)}
+.extension-card img{width:70px;height:70px;border-radius:8px;object-fit:cover}
+.extension-card:hover,.extension-card:focus-within{background:#ffffff;color:#051220;box-shadow:var(--shadow-2);transform:translateY(-6px)}
+.extension-card:hover .card-content h2,.extension-card:focus-within .card-content h2{color:#051220}
+.extension-card:hover .card-content p,.extension-card:focus-within .card-content p{color:rgba(5,18,32,0.9)}
+
+
+.extension-card{cursor:pointer}
+
+
+.card:hover h1, .card:hover h2, .card:hover h3, .card:hover h4,
+.card:hover p, .card:hover li, .card:hover span, .card:hover small, .card:hover strong,
+.card:focus-within h1, .card:focus-within h2, .card:focus-within h3, .card:focus-within h4,
+.card:focus-within p, .card:focus-within li, .card:focus-within span, .card:focus-within small, .card:focus-within strong,
+.phishing-card:hover h1, .phishing-card:hover h2, .phishing-card:hover h3, .phishing-card:hover p,
+.phishing-card:focus-within h1, .phishing-card:focus-within h2, .phishing-card:focus-within h3, .phishing-card:focus-within p,
+.about-card:hover h1, .about-card:hover h2, .about-card:hover p, .about-card:focus-within h1, .about-card:focus-within h2, .about-card:focus-within p,
+.extension-card:hover .card-content h2, .extension-card:hover .card-content p, .extension-card:focus-within .card-content h2, .extension-card:focus-within .card-content p,
+.contact-card:hover h2, .contact-card:hover p, .contact-card:focus-within h2, .contact-card:focus-within p {
+  color: #051220 !important;
+}
+
+.card:hover a, .card:focus-within a,
+.phishing-card:hover a, .phishing-card:focus-within a,
+.about-card:hover a, .about-card:focus-within a,
+.extension-card:hover a, .extension-card:focus-within a,
+.contact-card:hover a, .contact-card:focus-within a {
+  color: #051220 !important;
+}
+
+.card:hover .download-btn, .card:focus-within .download-btn,
+.about-card:hover .download-btn, .about-card:focus-within .download-btn,
+.extension-card:hover .download-btn, .extension-card:focus-within .download-btn,
+.phishing-card:hover .download-btn, .phishing-card:focus-within .download-btn {
+  background: linear-gradient(90deg,var(--accent),var(--accent-2));
+  color: #051220 !important;
+  box-shadow:0 10px 30px rgba(124,77,255,0.12);
+}
+
+.card:hover input, .card:hover textarea, .card:focus-within input, .card:focus-within textarea,
+.about-card:hover input, .about-card:hover textarea, .extension-card:hover input, .extension-card:hover textarea {
+  color: #051220 !important;
+  border-color: rgba(5,18,32,0.08) !important;
+}
+
+
